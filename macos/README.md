@@ -1,6 +1,7 @@
 # MacOS IP Camera Simulation
 
-This repository contains an implementation of algorithm described in [Medium article](http://google.com)
+This repository contains an implementation of algorithm described in 
+[Medium article](https://medium.com/@neurodatalab/integrate-emotion-analysis-into-your-skype-calls-a5de7c3e72e7)
 
 #### Install requirements
 
