@@ -1,3 +1,7 @@
+"""
+NeurodataLab LLC 25.12.2019
+Created by Andrey Belyaev
+"""
 import cv2
 import gi
 import numpy as np
@@ -50,8 +54,13 @@ class SensorFactory(GstRtspServer.RTSPMediaFactory):
 
     def draw_on_frame(self, frame):
         idxs = np.where(np.logical_and(self.christmas_image > 0, self.christmas_image < 255))
-        frame[idxs] = self.christmas_image[idxs]
-        return frame  # Just return frame without changes
+        for i in range(3):
+            for j in range(2):
+                cur_idxs = (idxs[0] + i * self.christmas_image.shape[0],
+                            idxs[1] + j * (frame.shape[1] - self.christmas_image.shape[1]),
+                            idxs[2])
+                frame[cur_idxs] = self.christmas_image[idxs]
+        return frame
 
     def do_create_element(self, url):
         return Gst.parse_launch(self.launch_string)  # Launch gst plugin
